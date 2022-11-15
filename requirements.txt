@@ -1,0 +1,4 @@
+numpy~=1.23.3
+pyscf~=2.1.1
+openfermion~=1.5.1
+openfermionpyscf~=0.5

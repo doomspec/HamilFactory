@@ -2,7 +2,6 @@ from math import sin, cos, pi
 
 """
 This file provides the function to produce geometry object for the chemistry packages to use.
-H2, LiH, H2O, N2 are provided.
 """
 
 
@@ -104,7 +103,7 @@ def get_CH2_geo(bond_len):
     return geometry
 
 
-def get_C2H2_geo(bond_len):
+def get_C2H2_geo(args):
     # https://cccbdb.nist.gov/exp2x.asp?casno=74862&charge=0
     atom_1 = 'H'
     atom_2 = 'C'
@@ -119,6 +118,25 @@ def get_C2H2_geo(bond_len):
     return geometry
 
 
+def get_C2H4_geo(args):
+    # https://cccbdb.nist.gov/expgeom2x.asp
+    C1 = ('C', (0.0, 0.0, 0.6695))
+    C2 = ('C', (0.0, 0.0, -0.6695))
+    H3 = ('H', (0.0, 0.9289, 1.2321))
+    H4 = ('H', (0.0, -0.9289, 1.2321))
+    H5 = ('H', (0.0, 0.9289, -1.2321))
+    H6 = ('H', (0.0, -0.9289, -1.2321))
+    geometry = [C1, C2, H3, H4, H5, H6]
+    return geometry
+
+def get_CO2_geo(bond_length):
+    # https://cccbdb.nist.gov/expgeom2x.asp
+    C1 = ('C', (0.0, 0.0, 0.0))
+    O2 = ('O', (0.0, 0.0, bond_length))
+    O3 = ('O', (0.0, 0.0, -bond_length))
+    geometry = [C1, O2, O3]
+    return geometry
+
 def get_NH3_geo(position_of_N):
     # https://cccbdb.nist.gov/expgeom2.asp?casno=7664417&charge=0
     N1 = (0.0000, 0.0000, position_of_N)
@@ -132,23 +150,27 @@ def get_NH3_geo(position_of_N):
 
 equilibrium_geometry_dict \
     = {
-        "H2": 0.74,
-        "H6": 1.0,
-        "H4": 1.0,
-        "LiH": 1.4,
-        "H2O": 0.96,
-        "N2": 1.09,
-        "NH3": 0.0,
-        "C2H2": None
-    }
+    "H2": 0.74,
+    "H6": 1.0,
+    "H4": 1.0,
+    "LiH": 1.4,
+    "H2O": 0.96,
+    "N2": 1.09,
+    "NH3": 0.0,
+    "C2H2": None,
+    "C2H4": None,
+    "CO2": 1.1621
+}
 geometry_generator_dict \
     = {
-        "H2": get_H2_geo,
-        "H6": get_H6_geo,
-        "H4": get_H4_geo,
-        "LiH": get_LiH_geo,
-        "H2O": get_H2O_geo,
-        "N2": get_N2_geo,
-        "NH3": get_NH3_geo,
-        "C2H2": get_C2H2_geo
-    }
+    "H2": get_H2_geo,
+    "H6": get_H6_geo,
+    "H4": get_H4_geo,
+    "LiH": get_LiH_geo,
+    "H2O": get_H2O_geo,
+    "N2": get_N2_geo,
+    "NH3": get_NH3_geo,
+    "C2H2": get_C2H2_geo,
+    "C2H4": get_C2H4_geo,
+    "CO2": get_CO2_geo
+}

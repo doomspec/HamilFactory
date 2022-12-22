@@ -1,7 +1,7 @@
 from openfermion.transforms import bravyi_kitaev, get_fermion_operator
 
-from backend import run_pyscf
-from get_HF_operation import get_HF_operator
+from mol.backend import run_pyscf
+from mol.get_HF_operation import get_HF_operator
 
 CHEMICAL_ACCURACY = 0.001
 from openfermion.chem import MolecularData
